@@ -35,8 +35,3 @@
 ---
 
 
-### 📬 Contact
-
-- ✉️ Email: your.email@example.com
-- 🌐 Blog or Portfolio: [URL 입력]
-- 🧳 Not just code, but **vision** 💡
