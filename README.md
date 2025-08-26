@@ -1,17 +1,14 @@
-<h1 align="center">🚀 미래를 지향하는 개발자?!</h1>
+<h1 align="center"> !</h1>
 
 
 ---
 
-### 🧠 About Me
+### About Me
 
-- 🔭 현재 진행 중: **도로 노면 탐지 시스템**
-- 🤖 특기: **임베디드 하드웨어를 활용한 ROS2 자율주행 & 실시간 제어**
-- 🎯 목표: **기술로 사람들의 삶을 더 편리하게 바꾸는 것**
 
 ---
 
-### 🛠️ Tech Stack
+### Tech Stack
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![C](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)
