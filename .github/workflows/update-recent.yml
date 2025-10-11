@@ -1,0 +1,95 @@
+name: Update recent repos
+
+on:
+  schedule:
+    - cron: "0 0 * * 1,4" # 매주 월/목 00:00 UTC (한국시간 오전 9시)
+  workflow_dispatch:      # 수동 실행 버튼
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write      # README 커밋에 필요
+
+    env:
+      GH_USER: SeBin7
+      # 제외하고 싶은 레포(쉼표 구분). 필요없으면 빈 값("")로 두세요.
+      EXCLUDE_REPOS: "PRsystem,BitTrip_1.0,Hansung"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch recent repositories via GitHub API
+        shell: bash
+        run: |
+          # GitHub API 호출 (인증 포함) → 최근 업데이트 순으로 최대 100개
+          curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+               -H "Accept: application/vnd.github+json" \
+               "https://api.github.com/users/${GH_USER}/repos?per_page=100&sort=updated" \
+            > repos.json
+
+          # EXCLUDE_REPOS 처리용 정규식(,로 구분된 이름들을 ^(A|B|C)$ 형태로)
+          if [[ -n "${EXCLUDE_REPOS}" ]]; then
+            EX_RE="^($(echo "${EXCLUDE_REPOS}" | sed 's/,/|/g'))$"
+          else
+            EX_RE="^$"  # 매치 안되게
+          fi
+
+          # jq로: 포크 아닌 공개 레포 중 제외 목록에 없는 것 상위 6개 추출
+          jq -r --arg exre "$EX_RE" '
+            map(select(.fork == false))
+            | map(select(.name | test($exre) | not))
+            | .[:6]
+            | .[]
+            | [.name, .html_url, (.description // "No description"), .updated_at]
+            | @tsv
+          ' repos.json > recent.tsv
+
+          # 최근 목록 Markdown 생성
+          {
+            echo ""
+            while IFS=$'\t' read -r NAME URL DESC UPDATED; do
+              DATE=${UPDATED%%T*}  # 2025-10-12T... → 2025-10-12
+              echo "- <a href=\"${URL}\"><b>${NAME}</b></a> — ${DESC} <sub><i>(${DATE})</i></sub>"
+            done < recent.tsv
+            echo ""
+          } > recent.md
+
+      - name: Inject into README between markers
+        shell: bash
+        run: |
+          # README가 없으면 생성
+          [[ -f README.md ]] || echo -e "# ${GH_USER}\n" > README.md
+
+          # 마커가 없으면 기본 블록 추가
+          if ! grep -q "<!--RECENT_REPOS_START-->" README.md; then
+            cat >> README.md <<'EOF'
+
+## 🔄 Recently Updated
+<!--RECENT_REPOS_START-->
+<!-- updated by GitHub Actions -->
+<!--RECENT_REPOS_END-->
+EOF
+          fi
+
+          # 마커 사이를 recent.md 내용으로 교체
+          awk '
+            BEGIN {start="<!--RECENT_REPOS_START-->", end="<!--RECENT_REPOS_END-->"}
+            $0 ~ start {print; system("cat recent.md"); flag=1; next}
+            $0 ~ end   {flag=0}
+            flag==0    {print}
+          ' README.md > README.new
+
+          mv README.new README.md
+
+      - name: Commit & push changes
+        shell: bash
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add README.md || true
+          git diff --staged --quiet && echo "No changes" && exit 0
+          git commit -m "docs(readme): auto-update recent repos"
+          git push
