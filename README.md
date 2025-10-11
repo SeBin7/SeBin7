@@ -1,21 +1,15 @@
 <h1 align="center"></h1>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/C/C++-blue" />
-  <img src="https://img.shields.io/badge/Python-informational" />
-  <img src="https://img.shields.io/badge/oneAPI%2FSYCL-XPU" />
-  <img src="https://img.shields.io/badge/oneDNN/IPEX-accel" />
-  <img src="https://img.shields.io/badge/OpenVINO-edge" />
-  <img src="https://img.shields.io/badge/CUDA-training" />
-  <img src="https://img.shields.io/badge/Hailo--8-embedded" />
-</p>
+
+
+
 
 <p align="center">
   <img height="170" src="https://github-readme-stats.vercel.app/api?username=SeBin7&show_icons=true" />
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=SeBin7&layout=compact&exclude_repo=PRsystem,BitTrip_1.0,Hansung&cache_seconds=7200&v=3" alt="Top languages" />
 
 ---
-## Language Basics
+## Language Basics&nbsp;<img src="https://img.shields.io/badge/C/C++-blue" alt="C/C++" />&nbsp;<img src="https://img.shields.io/badge/Python-informational" alt="Python" />
 <table>
   <tr>
     <td align="center">
@@ -38,43 +32,84 @@
 
 ---
 
-## Machine Learning Labs
-<div align="center">
-  <a href="https://github.com/SeBin7/OpenVINO_Basic">
-    <img width="280" src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=OpenVINO_Basic&show_owner=false" />
-  </a>
-  <a href="https://github.com/SeBin7/Deep_Learning_Examples">
-    <img width="280" src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=Deep_Learning_Examples&show_owner=false" />
-  </a>
-  <a href="https://github.com/SeBin7/Vision_AI">
-    <img width="280" src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=Vision_AI&show_owner=false" />
-  </a>
-  <a href="https://github.com/SeBin7/Quant_Lab">
-    <img width="280" src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=Quant_Lab&show_owner=false" />
-  </a>
-  <a href="https://github.com/SeBin7/onednn-xpu-fusedops-bench">
-    <img width="280" src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=onednn-xpu-fusedops-bench&show_owner=false" />
-  </a>
-</div>
+## Machine Learning Labs&nbsp;<img src="https://img.shields.io/badge/OpenVINO-edge" alt="OpenVINO" />&nbsp;<img src="https://img.shields.io/badge/oneDNN%2FIPEX-accel" alt="oneDNN/IPEX" />&nbsp;<img src="https://img.shields.io/badge/XPU-SYCL" alt="XPU/SYCL" />&nbsp;<img src="https://img.shields.io/badge/CUDA-training" alt="CUDA" />
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/SeBin7/OpenVINO_Basic">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=OpenVINO_Basic&show_owner=false" alt="OpenVINO_Basic"/>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/SeBin7/Deep_Learning_Examples">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=Deep_Learning_Examples&show_owner=false" alt="Deep_Learning_Examples"/>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/SeBin7/Vision_AI">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=Vision_AI&show_owner=false" alt="Vision_AI"/>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/SeBin7/Quant_Lab">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=Quant_Lab&show_owner=false" alt="Quant_Lab"/>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/SeBin7/onednn-xpu-fusedops-bench">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=onednn-xpu-fusedops-bench&show_owner=false" alt="onednn-xpu-fusedops-bench"/>
+      </a>
+    </td>
+    <td align="center">
+      &nbsp; <!-- 빈 칸: 3열 유지용 -->
+    </td>
+  </tr>
+</table>
 
 ---
 
-## Projects
-<div align="center">
-  <a href="https://github.com/SeBin7/Road_Vision">
-    <img width="280" src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=Road_Vision&show_owner=false" />
-  </a>
-  <a href="https://github.com/SeBin7/Chatbot_Basic">
-    <img width="280" src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=Chatbot_Basic&show_owner=false" />
-  </a>
-  <a href="https://github.com/SeBin7/Self_Driving">
-    <img width="280" src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=Self_Driving&show_owner=false" />
-  </a>
-  <a href="https://github.com/SeBin7/3D_Pose_Estimation">
-    <img width="280" src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=3D_Pose_Estimation&show_owner=false" />
-  </a>
-  <a href="https://github.com/SeBin7/BasicServerClient">
-    <img width="280" src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=BasicServerClient&show_owner=false" />
-  </a>
-  </a>
-</div>
+## Projects&nbsp;<img src="https://img.shields.io/badge/Road--Vision-demo" alt="Road_Vision" />&nbsp;<img src="https://img.shields.io/badge/CARLA-sim" alt="CARLA" />&nbsp;<img src="https://img.shields.io/badge/Edge-Hailo--8" alt="Hailo-8" />
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/SeBin7/Road_Vision">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=Road_Vision&show_owner=false" alt="Road_Vision"/>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/SeBin7/Chatbot_Basic">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=Chatbot_Basic&show_owner=false" alt="Chatbot_Basic"/>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/SeBin7/Self_Driving">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=Self_Driving&show_owner=false" alt="Self_Driving"/>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/SeBin7/3D_Pose_Estimation">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=3D_Pose_Estimation&show_owner=false" alt="3D_Pose_Estimation"/>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/SeBin7/BasicServerClient">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=BasicServerClient&show_owner=false" alt="BasicServerClient"/>
+      </a>
+    </td>
+    <td align="center">
+      &nbsp; <!-- 빈 칸: 3열 유지용 -->
+    </td>
+  </tr>
+</table>
+
+---
+## Recently Updated
+<!--RECENT_REPOS_START-->
+<!-- updated by GitHub Actions -->
+<!--RECENT_REPOS_END-->
