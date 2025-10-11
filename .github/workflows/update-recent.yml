@@ -2,7 +2,7 @@ name: Update recent repos
 
 on:
   schedule:
-    - cron: "0 0 * * 1,4"   # 매주 월/목 00:00 UTC (KST 09:00)
+    - cron: "0 0 * * 1,4"   # 월/목 00:00 UTC (KST 09:00)
   workflow_dispatch:
 
 jobs:
@@ -20,62 +20,70 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Fetch repos JSON (auth to avoid rate limit)
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Build and inject recent list (pure Python)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          curl -sS \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            -H "Accept: application/vnd.github+json" \
-            "https://api.github.com/users/${GH_USER}/repos?per_page=100&sort=updated" \
-            > repos.json
+          python - <<'PY'
+          import json, os, re, sys, urllib.request
 
-      - name: Build recent list (jq)
-        run: |
-          if [ -n "${EXCLUDE_REPOS}" ]; then
-            EX_RE="^($(echo "${EXCLUDE_REPOS}" | sed 's/,/|/g'))$"
-          else
-            EX_RE="^$"
-          fi
+          GH_USER = os.environ.get("GH_USER", "SeBin7")
+          TOKEN = os.environ.get("GITHUB_TOKEN", "")
+          EXCLUDE = set([s.strip() for s in os.environ.get("EXCLUDE_REPOS","").split(",") if s.strip()])
+          COUNT = int(os.environ.get("COUNT","6"))
 
-          jq -r --arg exre "$EX_RE" --arg n "$COUNT" '
-            map(select(.fork == false))                          # 포크 제외
-            | map(select(.name | test($exre) | not))             # 제외 목록 제외
-            | .[:( ($n|tonumber) )]                              # 상위 N개
-            | .[]
-            | [.name, .html_url, (.description // "No description"), .updated_at]
-            | @tsv
-          ' repos.json > recent.tsv
+          req = urllib.request.Request(
+              f"https://api.github.com/users/{GH_USER}/repos?per_page=100&sort=updated",
+              headers={
+                  "Accept": "application/vnd.github+json",
+                  **({"Authorization": f"Bearer {TOKEN}"} if TOKEN else {})
+              }
+          )
+          with urllib.request.urlopen(req) as r:
+              data = json.load(r)
 
-          {
-            echo ""
-            while IFS=$'\t' read -r NAME URL DESC UPDATED; do
-              DATE=${UPDATED%%T*}
-              echo "- <a href=\"${URL}\"><b>${NAME}</b></a> — ${DESC} <sub><i>(${DATE})</i></sub>"
-            done < recent.tsv
-            echo ""
-          } > recent.md
+          # 필터: 포크 제외, 제외목록 제외
+          repos = [x for x in data if not x.get("fork") and x.get("name") not in EXCLUDE]
+          repos = repos[:COUNT]
 
-      - name: Ensure markers exist in README
-        run: |
-          [ -f README.md ] || echo -e "# ${GH_USER}\n" > README.md
-          if ! grep -q "<!--RECENT_REPOS_START-->" README.md; then
-            cat >> README.md <<'EOF'
+          # Markdown 생성
+          lines = [""] + [
+              f'- <a href="{x["html_url"]}"><b>{x["name"]}</b></a> — {x.get("description") or "No description"} '
+              f'<sub><i>({(x.get("updated_at","").split("T")[0])})</i></sub>'
+              for x in repos
+          ] + [""]
 
-## 🔄 Recently Updated
-<!--RECENT_REPOS_START-->
-<!-- updated by GitHub Actions -->
-<!--RECENT_REPOS_END-->
-EOF
-          fi
+          recent_md = "\n".join(lines)
 
-      - name: Inject recent list into README
-        run: |
-          awk '
-            BEGIN {start="<!--RECENT_REPOS_START-->"; end="<!--RECENT_REPOS_END-->"}
-            $0 ~ start {print; system("cat recent.md"); flag=1; next}
-            $0 ~ end   {flag=0}
-            flag==0    {print}
-          ' README.md > README.new
-          mv README.new README.md
+          # README 보장 및 마커 주입
+          if not os.path.exists("README.md"):
+              with open("README.md","w",encoding="utf-8") as f:
+                  f.write(f"# {GH_USER}\n\n")
+
+          with open("README.md","r",encoding="utf-8") as f:
+              readme = f.read()
+
+          start = "<!--RECENT_REPOS_START-->"
+          end   = "<!--RECENT_REPOS_END-->"
+
+          if start not in readme or end not in readme:
+              readme += f"\n## 🔄 Recently Updated\n{start}\n<!-- updated by GitHub Actions -->\n{end}\n"
+
+          pattern = re.compile(rf"({re.escape(start)})(.*?)({re.escape(end)})", re.DOTALL)
+          new_readme = pattern.sub(rf"\\1\n{recent_md}\n\\3", readme)
+
+          if new_readme != readme:
+              with open("README.md","w",encoding="utf-8") as f:
+                  f.write(new_readme)
+              print("README.md updated.")
+          else:
+              print("No changes to README.md.")
+          PY
 
       - name: Commit & push
         run: |
