@@ -29,9 +29,6 @@
   <a href="https://github.com/SeBin7/Vision_AI">
     <img width="300" src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=Vision_AI&show_owner=false" />
   </a>
-  <a href="https://github.com/SeBin7/3D_Pose_Estimation">
-    <img width="300" src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=3D_Pose_Estimation&show_owner=false" />
-  </a>
   <a href="https://github.com/SeBin7/Quant_Lab">
     <img width="300" src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=Quant_Lab&show_owner=false" />
   </a>
@@ -47,14 +44,14 @@
   <a href="https://github.com/SeBin7/Road_Vision">
     <img width="300" src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=Road_Vision&show_owner=false" />
   </a>
-  <a href="https://github.com/SeBin7/SeBin7.github.io">
-    <img width="300" src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=SeBin7.github.io&show_owner=false" />
-  </a>
   <a href="https://github.com/SeBin7/Chatbot_Basic">
     <img width="300" src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=Chatbot_Basic&show_owner=false" />
   </a>
   <a href="https://github.com/SeBin7/Self_Driving">
     <img width="300" src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=Self_Driving&show_owner=false" />
+  </a>
+  <a href="https://github.com/SeBin7/3D_Pose_Estimation">
+    <img width="300" src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=3D_Pose_Estimation&show_owner=false" />
   </a>
   <a href="https://github.com/SeBin7/BasicServerClient">
     <img width="300" src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=BasicServerClient&show_owner=false" />
