@@ -109,19 +109,8 @@
 </table>
 
 ---
-## Recently Updated
-\1
 
-- <a href="https://github.com/SeBin7/SeBin7"><b>SeBin7</b></a> — No description <sub><i>(2025-10-11)</i></sub>
-- <a href="https://github.com/SeBin7/SeBin7.github.io"><b>SeBin7.github.io</b></a> — No description <sub><i>(2025-10-11)</i></sub>
-- <a href="https://github.com/SeBin7/Cpp_Basic"><b>Cpp_Basic</b></a> — No description <sub><i>(2025-10-11)</i></sub>
-- <a href="https://github.com/SeBin7/onednn-xpu-fusedops-bench"><b>onednn-xpu-fusedops-bench</b></a> — No description <sub><i>(2025-09-25)</i></sub>
-- <a href="https://github.com/SeBin7/C_Basic"><b>C_Basic</b></a> — No description <sub><i>(2025-09-23)</i></sub>
-- <a href="https://github.com/SeBin7/Python_Basic"><b>Python_Basic</b></a> — No description <sub><i>(2025-08-28)</i></sub>
-
-\3
-
-## 🔄 Recently Updated
+##  Recently Updated
 <!--RECENT_REPOS_START-->
 
 - <a href="https://github.com/SeBin7/Cpp_Basic"><b>Cpp_Basic</b></a> — No description <sub><i>(2025-10-11)</i></sub>
