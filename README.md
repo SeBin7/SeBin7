@@ -120,3 +120,15 @@
 - <a href="https://github.com/SeBin7/Python_Basic"><b>Python_Basic</b></a> — No description <sub><i>(2025-08-28)</i></sub>
 
 \3
+
+## 🔄 Recently Updated
+<!--RECENT_REPOS_START-->
+
+- <a href="https://github.com/SeBin7/Cpp_Basic"><b>Cpp_Basic</b></a> — No description <sub><i>(2025-10-11)</i></sub>
+- <a href="https://github.com/SeBin7/onednn-xpu-fusedops-bench"><b>onednn-xpu-fusedops-bench</b></a> — No description <sub><i>(2025-09-25)</i></sub>
+- <a href="https://github.com/SeBin7/C_Basic"><b>C_Basic</b></a> — No description <sub><i>(2025-09-23)</i></sub>
+- <a href="https://github.com/SeBin7/Python_Basic"><b>Python_Basic</b></a> — No description <sub><i>(2025-08-28)</i></sub>
+- <a href="https://github.com/SeBin7/Quant_Lab"><b>Quant_Lab</b></a> — No description <sub><i>(2025-08-27)</i></sub>
+- <a href="https://github.com/SeBin7/Road_Vision"><b>Road_Vision</b></a> — No description <sub><i>(2025-08-24)</i></sub>
+
+<!--RECENT_REPOS_END-->
