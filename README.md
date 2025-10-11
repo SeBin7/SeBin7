@@ -14,23 +14,27 @@
   <img height="170" src="https://github-readme-stats.vercel.app/api?username=SeBin7&show_icons=true" />
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=SeBin7&layout=compact&exclude_repo=PRsystem,BitTrip_1.0,Hansung&cache_seconds=7200&v=3" alt="Top languages" />
 
-</p>
-
-
 ---
-
 ## Language Basics
-<div align="center">
-  <a href="https://github.com/SeBin7/Cpp_Basic">
-    <img width="280" src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=Cpp_Basic&show_owner=false" />
-  </a>
-  <a href="https://github.com/SeBin7/C_Basic">
-    <img width="280" src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=C_Basic&show_owner=false" />
-  </a>
-  <a href="https://github.com/SeBin7/Python_Basic">
-    <img width="280" src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=Python_Basic&show_owner=false" />
-  </a>
-</div>
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/SeBin7/Python_Basic">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=Python_Basic&show_owner=false" alt="Python_Basic"/>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/SeBin7/Cpp_Basic">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=Cpp_Basic&show_owner=false" alt="Cpp_Basic"/>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/SeBin7/C_Basic">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=SeBin7&repo=C_Basic&show_owner=false" alt="C_Basic"/>
+      </a>
+    </td>
+  </tr>
+</table>
 
 ---
 
