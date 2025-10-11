@@ -30,13 +30,14 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python - <<'PY'
-          import json, os, re, sys, urllib.request
+          import json, os, re, urllib.request
 
-          GH_USER = os.environ.get("GH_USER", "SeBin7")
-          TOKEN = os.environ.get("GITHUB_TOKEN", "")
-          EXCLUDE = set([s.strip() for s in os.environ.get("EXCLUDE_REPOS","").split(",") if s.strip()])
-          COUNT = int(os.environ.get("COUNT","6"))
+          GH_USER  = os.environ.get("GH_USER", "SeBin7")
+          TOKEN    = os.environ.get("GITHUB_TOKEN", "")
+          EXCLUDE  = {s.strip() for s in os.environ.get("EXCLUDE_REPOS","").split(",") if s.strip()}
+          COUNT    = int(os.environ.get("COUNT","6"))
 
+          # --- GitHub API 호출
           req = urllib.request.Request(
               f"https://api.github.com/users/{GH_USER}/repos?per_page=100&sort=updated",
               headers={
@@ -47,20 +48,33 @@ jobs:
           with urllib.request.urlopen(req) as r:
               data = json.load(r)
 
-          # 필터: 포크 제외, 제외목록 제외
-          repos = [x for x in data if not x.get("fork") and x.get("name") not in EXCLUDE]
-          repos = repos[:COUNT]
+          # --- (선택) 프로필/블로그 레포 제외 세트
+          skip = {"SeBin7", "SeBin7.github.io"}  # 원치 않으면 비우거나 항목 제거
 
-          # Markdown 생성
+          # --- 필터: 포크/아카이브 제외 + 제외목록 + skip 제외
+          repos = [
+              x for x in data
+              if (not x.get("fork"))
+              and (not x.get("archived"))
+              and (x.get("name") not in (EXCLUDE | skip))
+          ][:COUNT]
+
+          def nice(desc: str) -> str:
+              if not desc:
+                  return "No description"
+              s = " ".join(desc.splitlines()).strip()
+              return s if s else "No description"
+
+          # --- Markdown 생성
           lines = [""] + [
-              f'- <a href="{x["html_url"]}"><b>{x["name"]}</b></a> — {x.get("description") or "No description"} '
+              f'- <a href="{x["html_url"]}"><b>{x["name"]}</b></a> — {nice(x.get("description"))} '
               f'<sub><i>({(x.get("updated_at","").split("T")[0])})</i></sub>'
               for x in repos
           ] + [""]
 
           recent_md = "\n".join(lines)
 
-          # README 보장 및 마커 주입
+          # --- README 로드 & 마커 확보
           if not os.path.exists("README.md"):
               with open("README.md","w",encoding="utf-8") as f:
                   f.write(f"# {GH_USER}\n\n")
@@ -74,8 +88,9 @@ jobs:
           if start not in readme or end not in readme:
               readme += f"\n## 🔄 Recently Updated\n{start}\n<!-- updated by GitHub Actions -->\n{end}\n"
 
+          # --- 백레퍼런스(\1,\3) 문제 없는 안전 치환
           pattern = re.compile(rf"({re.escape(start)})(.*?)({re.escape(end)})", re.DOTALL)
-          new_readme = pattern.sub(rf"\\1\n{recent_md}\n\\3", readme)
+          new_readme = pattern.sub(lambda m: m.group(1) + "\n" + recent_md + "\n" + m.group(3), readme)
 
           if new_readme != readme:
               with open("README.md","w",encoding="utf-8") as f:
