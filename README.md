@@ -1,5 +1,20 @@
 <h1 align="center"></h1>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/C/C++-blue" />
+  <img src="https://img.shields.io/badge/Python-informational" />
+  <img src="https://img.shields.io/badge/oneAPI%2FSYCL-XPU" />
+  <img src="https://img.shields.io/badge/oneDNN/IPEX-accel" />
+  <img src="https://img.shields.io/badge/OpenVINO-edge" />
+  <img src="https://img.shields.io/badge/CUDA-training" />
+  <img src="https://img.shields.io/badge/Hailo--8-embedded" />
+</p>
+
+<p align="center">
+  <img height="170" src="https://github-readme-stats.vercel.app/api?username=SeBin7&show_icons=true" />
+  <img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=SeBin7&layout=compact" />
+</p>
+
 
 ---
 
