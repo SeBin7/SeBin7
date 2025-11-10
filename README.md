@@ -113,7 +113,7 @@
 ##  Recently Updated
 <!--RECENT_REPOS_START-->
 
-- <a href="https://github.com/SeBin7/xpu_cnn_tuning"><b>xpu_cnn_tuning</b></a> — No description <sub><i>(2025-11-03)</i></sub>
+- <a href="https://github.com/SeBin7/xpu_cnn_tuning"><b>xpu_cnn_tuning</b></a> — No description <sub><i>(2025-11-07)</i></sub>
 - <a href="https://github.com/SeBin7/nvidia-dli"><b>nvidia-dli</b></a> — No description <sub><i>(2025-10-28)</i></sub>
 - <a href="https://github.com/SeBin7/Cpp_Basic"><b>Cpp_Basic</b></a> — No description <sub><i>(2025-10-11)</i></sub>
 - <a href="https://github.com/SeBin7/onednn-xpu-fusedops-bench"><b>onednn-xpu-fusedops-bench</b></a> — No description <sub><i>(2025-09-25)</i></sub>
